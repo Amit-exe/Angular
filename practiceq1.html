@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="Scripts\practicalq1.js"></script>
+        <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    
+    <style>
+    body{
+      padding:50px;
+      background-color: aquamarine;
+    }
+    </style>
+       
+    </head>
+    <body ng-app="myModel">
+        <div ng-controller="myController">
+        Search by : <input type="text" placeholder="name" ng-model="searchn.name" />
+        <input type="text" placeholder="city" ng-model="searchc.city" />
+        <br>
+        <input type='checkbox' ng-model='exactmatch'> exact match
+        <br>
+        <br>
+           <table class="table table-striped  table-bordered table-dark">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Salary</th>
+                <th>DOB</th>
+                <th>City</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="emp in employees | filter:searchn:exactmatch | filter:searchc:exactmatch">
+                <td> {{emp.name | uppercase}} </td>
+                <td>  {{emp.gender}}  </td>
+                <td>  {{emp.salary | currency:"₹":1}}  </td>
+                <td>{{ emp.dateOfBirth | date:'dd/mm/yyyy'}}</td>
+                <td>  {{emp.city}}  </td>
+              </tr>
+            </tbody>
+           </table>
+        </div>
+      </body>
+</html>
