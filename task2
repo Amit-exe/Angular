@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="Scripts/myScript.js"></script>
+    </head>
+    <body ng-app="myModel">
+        <div ng-controller="myController">
+         <ul>
+           <li ng-repeat='items in list' ng-init='parentIndex=$index'>
+             <ul>
+               <li ng-repeat='item in items'>
+                 {{item}} element -({{parentIndex}},{{$index}})
+               </li>
+             </ul>
+           </li>
+       
+         </ul>
+         
+        </div>
+      </body>
+</html>
+
+
+'use strict';
+var app = angular.module("myModel",[]);
+
+app.controller("myController",function($scope){
+  var list=[
+  	['a','b'],
+    ['c','d']
+    
+  ];
+  $scope.list=list;
+
+});
